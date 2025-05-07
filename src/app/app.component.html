@@ -2,7 +2,7 @@
   <div class="result">
     <h2>Your Result</h2>
     <div class="score">
-      <h1>{{ overallScore | number:'1.0-0' }}</h1>
+      <h1>{{ summary | average: summary.length }}</h1>
       <p>of 100</p>
     </div>
     <h2>{{ overallText }}</h2>
@@ -12,13 +12,13 @@
   <div class="summary">
     <h2>Summary</h2>
     <div class="summary-list">
-      <div class="summary-item" *ngFor="let item of summary" [ngClass]="item.class">
+      <div class="summary-item" *ngFor="let item of summary" [appBgColor]="item.bgColor" [appColor]="item.color">
         <div class="item-left">
           <span class="icon">{{ item.icon }}</span>
           <span class="name">{{ item.name }}</span>
         </div>
         <div class="item-score">
-          <span>{{ item.score | number:'1.0-0' }}</span> / 100
+          <span>{{ item.score | round }}</span> / 100
         </div>
       </div>
     </div>
